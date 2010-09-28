@@ -10,7 +10,7 @@ class Progress
   end
 
   def truncate_at length
-    @truncate_at = length - "  1/10  ( 10%), line   1: ".length
+    @truncate_at = length.to_i - "  1/10  ( 10%), line   1: ".length
   end
 
   def advance

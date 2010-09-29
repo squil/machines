@@ -89,7 +89,7 @@ private
 
         if net_ssh
           bar = progress.show(line, command)
-          print @failed ? bar.dark_red : bar.dark_green
+          puts @failed ? bar.dark_red : bar.dark_green
           log_to :file, "Machinesfile line #{line}:".blue
           prefix = command.is_a?(Array) ? 'Upload' : 'Run'
           log_to :file, "#{prefix} #{display(command).orange}"

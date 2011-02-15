@@ -11,7 +11,7 @@ describe 'Helpers' do
 
   describe 'display' do
     before(:each) do
-      @passwords = {:some_app => 'password'}
+      @db_config = {:some_app => {:password => 'password'}}
     end
 
     it 'should remove passwords' do
@@ -23,7 +23,7 @@ describe 'Helpers' do
     end
 
     it 'should ignore empty password list' do
-      @passwords = {}
+      @db_config = {}
       display('something nice').should == 'something nice'
     end
 

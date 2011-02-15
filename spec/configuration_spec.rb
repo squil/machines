@@ -41,16 +41,16 @@ describe 'Configuration' do
   end
 
   describe 'password' do
-    it 'should add a password to existing passwords' do
-      @passwords = {'app' => 'password'}
+    it 'should add a password to existing db config' do
+      @db_config = {'app' => {:password => 'password'}}
       password 'another', 'anotherpass'
-      @passwords.should == {'app' => 'password', 'another' => 'anotherpass'}
+      @db_config.should == {'app' => {:password => 'password'}, 'another' => {:password => 'anotherpass'}}
     end
 
-    it 'should add a password to empty passwords' do
-      @passwords = {}
+    it 'should add a password to empty db_config' do
+      @db_config = {}
       password 'app', 'newpass'
-      @passwords.should == {'app' => 'newpass'}
+      @db_config.should == {'app' => {:password => 'newpass'}}
     end
   end
 

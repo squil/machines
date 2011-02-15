@@ -26,14 +26,14 @@ describe 'Database' do
       should_receive(:required_options).with({:to => 'dir', :for => 'app'}, [:to, :for])
       @environment = 'test'
       @dbmaster = 'dbmaster'
-      @passwords = {'app' => 'password'}
+      @db_config = {'app' => {:adapter => 'mysql2', :password => 'password', :host => '1.2.3.4'}}
       write_yaml :for => 'app', :to => 'dir'
       actual = @added.first
       actual.should match /echo '.*' > dir\/database.yml/m
       actual.should match /test:/m
-      actual.should match /adapter: mysql/m
+      actual.should match /adapter: mysql2/m
       actual.should match /database: app/m
-      actual.should match /host: dbmaster/m
+      actual.should match /host: 1.2.3.4/m
       actual.should match /password: password/m
       actual.should match /username: app/m
       @checks.should == ["test -s dir/database.yml #{pass_fail}"]

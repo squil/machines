@@ -16,7 +16,7 @@ module Machines
       require lib; include eval(ActiveSupport::Inflector.camelize(File.basename(lib, '.rb')))
     end
 
-    attr_reader :passwords, :host, :userpass, :dbmaster, :machinename, :username, :users, :passwords, :environment, :apps, :role
+    attr_reader :db_config, :host, :userpass, :dbmaster, :machinename, :username, :users, :passwords, :environment, :apps, :role
 
     # Takes the arguments given on the commandline except the <command>. Set defaults.
     # @param options [Hash]
@@ -30,7 +30,7 @@ module Machines
     # @option options [Optional String] :username the username. Defaults to 'www'
     def initialize(options)
       @commands = []
-      @passwords = {}
+      @db_config = {}
       @config = options[:machine]
       @host = options[:host]
       @userpass = options[:userpass]

@@ -16,7 +16,8 @@ module Machines
 
     # Set a database password for an application (Used to communicate between application and db server)
     def password application, password
-      @passwords[application] = password
+      @db_config[application] ||= {}
+      @db_config[application][:password] = password
     end
 
     # Add some text to the end of a file
